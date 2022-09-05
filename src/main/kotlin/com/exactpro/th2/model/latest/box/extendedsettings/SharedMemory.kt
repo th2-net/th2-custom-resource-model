@@ -17,5 +17,5 @@
 package com.exactpro.th2.model.latest.box.extendedsettings
 
 data class SharedMemory(
-    val enabled: Boolean
+    val enabled: Boolean = false
 )

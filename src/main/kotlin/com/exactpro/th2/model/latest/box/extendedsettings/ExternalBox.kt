@@ -17,12 +17,12 @@
 package com.exactpro.th2.model.latest.box.extendedsettings
 
 data class ExternalBox(
-    val address: String?,
-    val enabled: Boolean?,
-    val endpoints: List<ExternalEndpoint>?
+    val address: String? = null,
+    val enabled: Boolean? = null,
+    val endpoints: List<ExternalEndpoint>? = null
 )
 
 data class ExternalEndpoint(
-    val name: String,
-    val targetPort: Int
+    val name: String = "",
+    val targetPort: Int = 0
 )

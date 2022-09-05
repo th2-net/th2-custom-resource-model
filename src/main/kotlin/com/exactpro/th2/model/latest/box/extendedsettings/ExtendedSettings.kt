@@ -21,16 +21,16 @@ import io.fabric8.kubernetes.api.model.HostAlias
 import io.fabric8.kubernetes.api.model.ResourceRequirements
 
 data class ExtendedSettings(
-    val chartConfig: ChartConfig?,
-    val envVariables: Map<String, String>?,
-    val sharedMemory: SharedMemory?,
-    val replicas: Int?,
-    val k8sProbes: Boolean?,
-    val externalBox: ExternalBox?,
-    val hostAliases: List<HostAlias>?,
-    val hostNetwork: Boolean?,
-    val nodeSelector: Map<String, String>?,
-    val mounting: List<Mounting>?,
-    val resources: ResourceRequirements?,
-    val service: Service?
+    val chartConfig: ChartConfig? = null,
+    val envVariables: Map<String, String>? = null,
+    val sharedMemory: SharedMemory? = null,
+    val replicas: Int? = null,
+    val k8sProbes: Boolean? = null,
+    val externalBox: ExternalBox? = null,
+    val hostAliases: List<HostAlias>? = null,
+    val hostNetwork: Boolean? = null,
+    val nodeSelector: Map<String, String>? = null,
+    val mounting: List<Mounting>? = null,
+    val resources: ResourceRequirements? = null,
+    val service: Service? = null
 )
