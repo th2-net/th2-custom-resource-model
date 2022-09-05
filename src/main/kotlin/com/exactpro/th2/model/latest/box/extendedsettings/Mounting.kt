@@ -17,6 +17,6 @@
 package com.exactpro.th2.model.latest.box.extendedsettings
 
 data class Mounting(
-    val path: String,
-    val pvcName: String
+    val path: String = "",
+    val pvcName: String = ""
 )
