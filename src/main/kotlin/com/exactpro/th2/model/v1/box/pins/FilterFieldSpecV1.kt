@@ -16,15 +16,10 @@
 
 package com.exactpro.th2.model.v1.box.pins
 
-import com.exactpro.th2.model.latest.box.pins.FilterFieldSpec
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class FilterFieldSpecV1(
     @JsonProperty("expected-value") val expectedValue: String,
     @JsonProperty("field-name") val fieldName: String,
     val operation: String
-) {
-    fun toFilterFieldSpec(): FilterFieldSpec {
-        return FilterFieldSpec(expectedValue, fieldName, operation)
-    }
-}
+)

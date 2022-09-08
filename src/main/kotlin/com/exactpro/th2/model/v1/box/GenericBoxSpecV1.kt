@@ -16,16 +16,7 @@
 
 package com.exactpro.th2.model.v1.box
 
-import com.exactpro.th2.model.Convertible
-import com.exactpro.th2.model.latest.box.GenericBoxSpec
 import com.exactpro.th2.model.latest.box.Prometheus
-import com.exactpro.th2.model.latest.box.pins.GrpcClient
-import com.exactpro.th2.model.latest.box.pins.GrpcSection
-import com.exactpro.th2.model.latest.box.pins.GrpcServer
-import com.exactpro.th2.model.latest.box.pins.MqPublisher
-import com.exactpro.th2.model.latest.box.pins.MqSection
-import com.exactpro.th2.model.latest.box.pins.MqSubscriber
-import com.exactpro.th2.model.latest.box.pins.PinSpec
 import com.exactpro.th2.model.v1.box.extendedsettings.ExtendedSettingsV1
 import com.exactpro.th2.model.v1.box.pins.PinSpecV1
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -47,62 +38,4 @@ data class GenericBoxSpecV1(
     val grpcRouter: Map<String, Any>?,
     val cradleManager: Map<String, Any>?,
     val disabled: Boolean?
-) : Convertible {
-    override fun toNextVersion(): Convertible {
-        return GenericBoxSpec(
-            imageName,
-            imageVersion,
-            type,
-            versionRange,
-            customConfig,
-            extendedSettings?.toExtendedSettings(),
-            convertPins().takeIf { it.isNotEmpty() },
-            prometheus,
-            loggingConfig,
-            mqRouter,
-            grpcRouter,
-            cradleManager,
-            disabled
-        )
-    }
-
-    private fun convertPins(): PinSpec {
-        val mqSubscriber = ArrayList<MqSubscriber>()
-        val mqPublishers = ArrayList<MqPublisher>()
-        val grpcClient = ArrayList<GrpcClient>()
-        val grpcServer = ArrayList<GrpcServer>()
-
-        for (pin in pins ?: ArrayList()) {
-            when (pin.connectionType) {
-                PinType.MQ.value -> {
-                    if (pin.attributes?.contains("publish") == true) {
-                        mqPublishers.add(pin.toPublisherPin())
-                    } else {
-                        mqSubscriber.add(pin.toSubscriberPin())
-                    }
-                }
-                PinType.GRPC_CLIENT.value -> grpcClient.add(pin.toGrpcClientPin())
-                PinType.GRPC_SERVER.value -> grpcServer.add(pin.toGrpcServerPin())
-            }
-        }
-        val grpcSection = GrpcSection(
-            grpcClient.ifEmpty { null },
-            grpcServer.ifEmpty { null }
-        )
-
-        val mqSection = MqSection(
-            mqSubscriber.ifEmpty { null },
-            mqPublishers.ifEmpty { null }
-        )
-        return PinSpec(
-            mqSection.takeIf { it.isNotEmpty() },
-            grpcSection.takeIf { it.isNotEmpty() }
-        )
-    }
-}
-
-enum class PinType(val value: String) {
-    MQ("mq"),
-    GRPC_CLIENT("grpc-client"),
-    GRPC_SERVER("grpc-server"),
-}
+)

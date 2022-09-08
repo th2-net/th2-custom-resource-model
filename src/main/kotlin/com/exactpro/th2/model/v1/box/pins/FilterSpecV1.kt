@@ -16,25 +16,8 @@
 
 package com.exactpro.th2.model.v1.box.pins
 
-import com.exactpro.th2.model.latest.box.pins.FilterSpecGrpc
-import com.exactpro.th2.model.latest.box.pins.FilterSpecMq
-
 data class FilterSpecV1(
     val properties: List<FilterFieldSpecV1>?,
     val message: List<FilterFieldSpecV1>?,
     val metadata: List<FilterFieldSpecV1>?
-) {
-    fun toMqFilter(): FilterSpecMq {
-        return FilterSpecMq(
-            properties?.map { it.toFilterFieldSpec() },
-            message?.map { it.toFilterFieldSpec() },
-            metadata?.map { it.toFilterFieldSpec() }
-        )
-    }
-
-    fun toGrpcFilter(): FilterSpecGrpc {
-        return FilterSpecGrpc(
-            properties?.map { it.toFilterFieldSpec() }
-        )
-    }
-}
+)
