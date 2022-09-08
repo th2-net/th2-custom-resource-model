@@ -16,20 +16,12 @@
 
 package com.exactpro.th2.model.latest.box.pins
 
-import com.exactpro.th2.model.ComparableTo
-import com.exactpro.th2.model.v1.box.pins.PinSpecV1
 import com.exactpro.th2.model.v1.link.LinkEndpoint
-import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class PinSpec(
     val mq: MqSection?,
     val grpc: GrpcSection?
-) {
-    @JsonIgnore
-    fun isNotEmpty(): Boolean {
-        return mq != null || grpc != null
-    }
-}
+)
 
 data class MqSubscriber(
     val name: String,
@@ -37,31 +29,18 @@ data class MqSubscriber(
     val filters: List<FilterSpecMq>?,
     val settings: PinSettings?,
     var linkTo: MutableList<LinkEndpoint>? = null
-) : ComparableTo<PinSpecV1> {
-    override fun contentEquals(that: PinSpecV1): Boolean {
-        return this == that.toSubscriberPin()
-    }
-}
+)
 
 data class MqPublisher(
     val name: String,
     val attributes: List<String>?,
     val filters: List<FilterSpecMq>?,
-) : ComparableTo<PinSpecV1> {
-    override fun contentEquals(that: PinSpecV1): Boolean {
-        return this == that.toPublisherPin()
-    }
-}
+)
 
 data class MqSection(
     val subscribers: List<MqSubscriber>?,
     val publishers: List<MqPublisher>?
-) {
-    @JsonIgnore
-    fun isNotEmpty(): Boolean {
-        return subscribers != null || publishers != null
-    }
-}
+)
 
 data class GrpcClient(
     val name: String,
@@ -71,27 +50,14 @@ data class GrpcClient(
     val filters: List<FilterSpecGrpc>?,
     val strategy: String?,
     var linkTo: MutableList<LinkEndpoint>? = null
-) : ComparableTo<PinSpecV1> {
-    override fun contentEquals(that: PinSpecV1): Boolean {
-        return this == that.toGrpcClientPin()
-    }
-}
+)
 
 data class GrpcServer(
     val name: String,
     val serviceClasses: List<String>,
-) : ComparableTo<PinSpecV1> {
-    override fun contentEquals(that: PinSpecV1): Boolean {
-        return this == that.toGrpcServerPin()
-    }
-}
+)
 
 data class GrpcSection(
     val client: List<GrpcClient>?,
     val server: List<GrpcServer>?
-) {
-    @JsonIgnore
-    fun isNotEmpty(): Boolean {
-        return client != null || server != null
-    }
-}
+)

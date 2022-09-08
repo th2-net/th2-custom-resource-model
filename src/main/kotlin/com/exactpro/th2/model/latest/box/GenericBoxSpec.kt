@@ -16,7 +16,6 @@
 
 package com.exactpro.th2.model.latest.box
 
-import com.exactpro.th2.model.Convertible
 import com.exactpro.th2.model.latest.box.extendedsettings.ExtendedSettings
 import com.exactpro.th2.model.latest.box.pins.PinSpec
 
@@ -38,8 +37,4 @@ data class GenericBoxSpec(
     val cradleManager: Map<String, Any>?,
     val disabled: Boolean?,
     val bookName: String? = null
-) : Convertible {
-    override fun toNextVersion(): Convertible {
-        throw AssertionError("THis is the latest version. Further conversions are not supported")
-    }
-}
+)

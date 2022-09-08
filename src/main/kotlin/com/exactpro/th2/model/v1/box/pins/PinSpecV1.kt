@@ -16,10 +16,6 @@
 
 package com.exactpro.th2.model.v1.box.pins
 
-import com.exactpro.th2.model.latest.box.pins.GrpcClient
-import com.exactpro.th2.model.latest.box.pins.GrpcServer
-import com.exactpro.th2.model.latest.box.pins.MqPublisher
-import com.exactpro.th2.model.latest.box.pins.MqSubscriber
 import com.exactpro.th2.model.latest.box.pins.PinSettings
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -35,44 +31,4 @@ data class PinSpecV1(
     val strategy: String?,
     val filters: List<FilterSpecV1>?,
     val settings: PinSettings?
-) {
-
-    fun toSubscriberPin(): MqSubscriber {
-        return MqSubscriber(
-            name,
-            attributes,
-            filters?.map { it.toMqFilter() },
-            settings
-        )
-    }
-
-    fun toPublisherPin(): MqPublisher {
-        return MqPublisher(
-            name,
-            attributes,
-            filters?.map { it.toMqFilter() },
-        )
-    }
-
-    fun toGrpcClientPin(): GrpcClient {
-        return GrpcClient(
-            name,
-            serviceClass ?: PinSpecV1.Companion.SERVICE_CLASS_PLACE_HOLDER,
-            attributes,
-            filters?.map { it.toGrpcFilter() },
-            strategy
-        )
-    }
-
-    fun toGrpcServerPin(): GrpcServer {
-        return GrpcServer(
-            name,
-            serviceClasses ?: PinSpecV1.Companion.SERVICE_CLASSES_PLACE_HOLDER
-        )
-    }
-
-    companion object {
-        const val SERVICE_CLASS_PLACE_HOLDER = "PLEASE SPECIFY SERVICE CLASS"
-        val SERVICE_CLASSES_PLACE_HOLDER = listOf("PLEASE SPECIFY SERVICE CLASSES")
-    }
-}
+)

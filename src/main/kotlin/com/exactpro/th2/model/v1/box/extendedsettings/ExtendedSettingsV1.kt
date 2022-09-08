@@ -17,7 +17,6 @@
 package com.exactpro.th2.model.v1.box.extendedsettings
 
 import com.exactpro.th2.model.latest.box.ChartConfig
-import com.exactpro.th2.model.latest.box.extendedsettings.ExtendedSettings
 import com.exactpro.th2.model.latest.box.extendedsettings.ExternalBox
 import com.exactpro.th2.model.latest.box.extendedsettings.Mounting
 import com.exactpro.th2.model.latest.box.extendedsettings.SharedMemory
@@ -38,21 +37,4 @@ data class ExtendedSettingsV1(
     val mounting: List<Mounting>?,
     val resources: ResourceRequirements?,
     val service: ServiceV1?
-) {
-    fun toExtendedSettings(): ExtendedSettings {
-        return ExtendedSettings(
-            chartConfig,
-            envVariables,
-            sharedMemory,
-            replicas,
-            k8sProbes,
-            externalBox,
-            hostAliases,
-            hostNetwork,
-            nodeSelector,
-            mounting,
-            resources,
-            service?.toService()
-        )
-    }
-}
+)
