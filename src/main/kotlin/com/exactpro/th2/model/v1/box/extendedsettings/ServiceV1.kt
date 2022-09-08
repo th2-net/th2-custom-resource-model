@@ -16,10 +16,7 @@
 
 package com.exactpro.th2.model.v1.box.extendedsettings
 
-import com.exactpro.th2.model.latest.box.extendedsettings.ClusterIpConfig
 import com.exactpro.th2.model.latest.box.extendedsettings.Ingress
-import com.exactpro.th2.model.latest.box.extendedsettings.NodePortConfig
-import com.exactpro.th2.model.latest.box.extendedsettings.Service
 
 data class ServiceV1(
     val enabled: Boolean?,
@@ -27,30 +24,6 @@ data class ServiceV1(
     val type: ServiceType?,
     val ingress: Ingress?
 ) {
-    fun toService(): Service {
-        val nodePort: MutableList<NodePortConfig> = ArrayList()
-        val clusterIP: MutableList<ClusterIpConfig> = ArrayList()
-        when (type) {
-            ServiceType.NodePort -> {
-                endpoints?.forEach {
-                    nodePort.add(NodePortConfig(it.name, it.targetPort, it.nodePort))
-                }
-            }
-            ServiceType.ClusterIP -> {
-                endpoints?.forEach {
-                    clusterIP.add(ClusterIpConfig(it.name, it.targetPort))
-                }
-            }
-            null -> {}
-        }
-        return Service(
-            enabled,
-            nodePort.takeIf { it.isNotEmpty() },
-            clusterIP.takeIf { it.isNotEmpty() },
-            ingress
-        )
-    }
-
     enum class ServiceType {
         NodePort, ClusterIP
     }
