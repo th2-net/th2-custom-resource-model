@@ -17,7 +17,7 @@
 package com.exactpro.th2.model.latest.box.extendedsettings
 
 data class Service(
-    val enabled: Boolean? = null,
+    val enabled: Boolean? = false,
     val nodePort: List<NodePortConfig>? = null,
     val clusterIP: List<ClusterIpConfig>? = null,
     val ingress: Ingress? = null
@@ -26,7 +26,7 @@ data class Service(
 data class NodePortConfig(
     val name: String = "",
     val containerPort: Int? = null,
-    val exposedPort: Int? = 0
+    val exposedPort: Int? = -1
 )
 
 data class ClusterIpConfig(

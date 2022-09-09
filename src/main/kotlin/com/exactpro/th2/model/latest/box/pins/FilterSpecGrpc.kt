@@ -17,5 +17,5 @@
 package com.exactpro.th2.model.latest.box.pins
 
 data class FilterSpecGrpc(
-    val properties: List<FilterFieldSpec>?,
+    val properties: List<FilterFieldSpec>? = null,
 )

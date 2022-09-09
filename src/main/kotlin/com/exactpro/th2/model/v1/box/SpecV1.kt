@@ -21,7 +21,7 @@ import com.exactpro.th2.model.v1.box.extendedsettings.ExtendedSettingsV1
 import com.exactpro.th2.model.v1.box.pins.PinSpecV1
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class GenericBoxSpecV1(
+data class SpecV1(
     // required fields
     @JsonProperty("image-name") val imageName: String,
     @JsonProperty("image-version") val imageVersion: String,
@@ -39,9 +39,3 @@ data class GenericBoxSpecV1(
     val cradleManager: Map<String, Any>?,
     val disabled: Boolean?
 )
-
-enum class PinType(val value: String) {
-    MQ("mq"),
-    GRPC_CLIENT("grpc-client"),
-    GRPC_SERVER("grpc-server"),
-}
