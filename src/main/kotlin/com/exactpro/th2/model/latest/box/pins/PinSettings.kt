@@ -17,7 +17,7 @@
 package com.exactpro.th2.model.latest.box.pins
 
 data class PinSettings(
-    val overloadStrategy: String?,
-    val queueLength: Int?,
-    val storageOnDemand: Boolean?
+    val overloadStrategy: String? = null,
+    val queueLength: Int? = null,
+    val storageOnDemand: Boolean? = false
 )

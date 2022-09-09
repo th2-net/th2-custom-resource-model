@@ -23,6 +23,6 @@ data class RouterLink(
 )
 
 data class LinkEndpoint(
-    val box: String,
-    val pin: String
+    val box: String = "",
+    val pin: String = ""
 )

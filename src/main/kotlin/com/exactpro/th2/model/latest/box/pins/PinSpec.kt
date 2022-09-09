@@ -19,45 +19,45 @@ package com.exactpro.th2.model.latest.box.pins
 import com.exactpro.th2.model.v1.link.LinkEndpoint
 
 data class PinSpec(
-    val mq: MqSection?,
-    val grpc: GrpcSection?
+    val mq: MqSection? = null,
+    val grpc: GrpcSection? = null
 )
 
 data class MqSubscriber(
-    val name: String,
-    val attributes: List<String>?,
-    val filters: List<FilterSpecMq>?,
-    val settings: PinSettings?,
+    val name: String = "",
+    val attributes: MutableList<String>? = null,
+    val filters: List<FilterSpecMq>? = null,
+    val settings: PinSettings? = null,
     var linkTo: MutableList<LinkEndpoint>? = null
 )
 
 data class MqPublisher(
-    val name: String,
-    val attributes: List<String>?,
-    val filters: List<FilterSpecMq>?,
+    val name: String = "",
+    val attributes: MutableList<String>? = null,
+    val filters: List<FilterSpecMq>? = null,
 )
 
 data class MqSection(
-    val subscribers: List<MqSubscriber>?,
-    val publishers: List<MqPublisher>?
+    val subscribers: List<MqSubscriber>? = null,
+    val publishers: List<MqPublisher>? = null
 )
 
 data class GrpcClient(
-    val name: String,
-    val serviceClass: String,
+    val name: String = "",
+    val serviceClass: String = "",
 
-    val attributes: List<String>?,
-    val filters: List<FilterSpecGrpc>?,
-    val strategy: String?,
+    val attributes: List<String>? = null,
+    val filters: MutableList<FilterSpecGrpc>? = ArrayList(),
+    val strategy: String? = null,
     var linkTo: MutableList<LinkEndpoint>? = null
 )
 
 data class GrpcServer(
-    val name: String,
-    val serviceClasses: List<String>,
+    val name: String = "",
+    val serviceClasses: List<String> = ArrayList(),
 )
 
 data class GrpcSection(
-    val client: List<GrpcClient>?,
-    val server: List<GrpcServer>?
+    val client: List<GrpcClient>? = null,
+    val server: List<GrpcServer>? = null
 )

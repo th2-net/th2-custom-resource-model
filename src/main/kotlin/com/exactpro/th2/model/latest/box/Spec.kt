@@ -19,22 +19,22 @@ package com.exactpro.th2.model.latest.box
 import com.exactpro.th2.model.latest.box.extendedsettings.ExtendedSettings
 import com.exactpro.th2.model.latest.box.pins.PinSpec
 
-data class GenericBoxSpec(
+data class Spec(
     // required fields
-    val imageName: String,
-    val imageVersion: String,
+    val imageName: String = "",
+    val imageVersion: String = "",
 
     // optional fields
-    val type: String?,
-    val versionRange: String?,
-    var customConfig: MutableMap<String, Any>?,
-    val extendedSettings: ExtendedSettings?,
-    val pins: PinSpec?,
-    val prometheus: Prometheus?,
-    val loggingConfig: String?,
-    val mqRouter: Map<String, Any>?,
-    val grpcRouter: Map<String, Any>?,
-    val cradleManager: Map<String, Any>?,
-    val disabled: Boolean?,
+    val type: String? = null,
+    val versionRange: String? = null,
+    var customConfig: MutableMap<String, Any>? = null,
+    val extendedSettings: ExtendedSettings? = null,
+    val pins: PinSpec? = null,
+    val prometheus: Prometheus? = null,
+    val loggingConfig: String? = null,
+    val mqRouter: Map<String, Any>? = null,
+    val grpcRouter: Map<String, Any>? = null,
+    val cradleManager: Map<String, Any>? = null,
+    val disabled: Boolean? = false,
     val bookName: String? = null
 )

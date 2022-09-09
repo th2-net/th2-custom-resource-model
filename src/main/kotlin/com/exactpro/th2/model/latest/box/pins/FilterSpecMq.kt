@@ -17,7 +17,7 @@
 package com.exactpro.th2.model.latest.box.pins
 
 data class FilterSpecMq(
-    val properties: List<FilterFieldSpec>?,
-    val message: List<FilterFieldSpec>?,
-    val metadata: List<FilterFieldSpec>?
+    val properties: List<FilterFieldSpec>? = null,
+    val message: List<FilterFieldSpec>? = null,
+    val metadata: List<FilterFieldSpec>? = null
 )

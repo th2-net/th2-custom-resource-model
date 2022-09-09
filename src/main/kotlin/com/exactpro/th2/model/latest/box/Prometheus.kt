@@ -17,7 +17,7 @@
 package com.exactpro.th2.model.latest.box
 
 data class Prometheus(
-    val enabled: Boolean?,
-    val host: String?,
-    val port: Int?
+    val enabled: Boolean? = true,
+    val host: String? = null,
+    val port: Int? = null
 )

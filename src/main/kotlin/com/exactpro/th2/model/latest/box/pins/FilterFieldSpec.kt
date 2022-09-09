@@ -17,7 +17,7 @@
 package com.exactpro.th2.model.latest.box.pins
 
 data class FilterFieldSpec(
-    val expectedValue: String,
-    val fieldName: String,
-    val operation: String
+    val expectedValue: String = "",
+    val fieldName: String = "",
+    val operation: String = ""
 )
