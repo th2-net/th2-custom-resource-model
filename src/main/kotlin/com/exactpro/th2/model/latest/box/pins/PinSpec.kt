@@ -25,15 +25,15 @@ data class PinSpec(
 
 data class MqSubscriber(
     val name: String = "",
-    val attributes: MutableList<String>? = null,
+    val attributes: List<String>? = null,
     val filters: List<FilterSpecMq>? = null,
     val settings: PinSettings? = null,
-    var linkTo: MutableList<LinkEndpoint>? = null
+    var linkTo: List<LinkEndpoint>? = null
 )
 
 data class MqPublisher(
     val name: String = "",
-    val attributes: MutableList<String>? = null,
+    val attributes: List<String>? = null,
     val filters: List<FilterSpecMq>? = null,
 )
 
@@ -47,9 +47,9 @@ data class GrpcClient(
     val serviceClass: String = "",
 
     val attributes: List<String>? = null,
-    val filters: MutableList<FilterSpecGrpc>? = ArrayList(),
+    val filters: List<FilterSpecGrpc>? = ArrayList(),
     val strategy: String? = null,
-    var linkTo: MutableList<LinkEndpoint>? = null
+    var linkTo: List<LinkEndpoint>? = null
 )
 
 data class GrpcServer(
