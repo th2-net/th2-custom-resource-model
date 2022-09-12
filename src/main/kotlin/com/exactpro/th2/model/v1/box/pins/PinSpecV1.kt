@@ -32,3 +32,9 @@ data class PinSpecV1(
     val filters: List<FilterSpecV1>?,
     val settings: PinSettings?
 )
+
+enum class PinType(val value: String) {
+    MQ("mq"),
+    GRPC_CLIENT("grpc-client"),
+    GRPC_SERVER("grpc-server"),
+}
