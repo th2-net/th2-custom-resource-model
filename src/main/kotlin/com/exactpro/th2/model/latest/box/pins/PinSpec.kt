@@ -23,13 +23,21 @@ data class PinSpec(
     val grpc: GrpcSection? = null
 )
 
+interface Pin {
+    val name: String
+}
+
+interface Linkable : Pin {
+    val linkTo: List<LinkEndpoint>?
+}
+
 data class MqSubscriber(
-    val name: String = "",
+    override val name: String = "",
     val attributes: List<String>? = null,
     val filters: List<FilterSpecMq>? = null,
     val settings: PinSettings? = null,
-    var linkTo: List<LinkEndpoint>? = null
-)
+    override var linkTo: List<LinkEndpoint>? = null
+) : Linkable
 
 data class MqPublisher(
     val name: String = "",
@@ -43,14 +51,14 @@ data class MqSection(
 )
 
 data class GrpcClient(
-    val name: String = "",
+    override val name: String = "",
     val serviceClass: String = "",
 
     val attributes: List<String>? = null,
     val filters: List<FilterSpecGrpc>? = ArrayList(),
     val strategy: String? = null,
-    var linkTo: List<LinkEndpoint>? = null
-)
+    override var linkTo: List<LinkEndpoint>? = null
+) : Linkable
 
 data class GrpcServer(
     val name: String = "",
