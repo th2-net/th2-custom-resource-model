@@ -26,7 +26,7 @@ data class Service(
 data class NodePortConfig(
     val name: String = "",
     val containerPort: Int? = null,
-    val exposedPort: Int? = -1
+    val exposedPort: Int = -1
 )
 
 data class ClusterIpConfig(
@@ -35,5 +35,5 @@ data class ClusterIpConfig(
 )
 
 data class Ingress(
-    val urlPaths: List<String> = ArrayList()
+    val urlPaths: List<String>? = ArrayList()
 )
