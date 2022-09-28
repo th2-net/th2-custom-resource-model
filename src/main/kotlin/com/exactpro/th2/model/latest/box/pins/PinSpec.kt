@@ -59,7 +59,7 @@ data class GrpcClient(
     val serviceClass: String = "",
 
     val attributes: List<String>? = null,
-    val filters: List<FilterSpecGrpc>? = ArrayList(),
+    val filters: List<FilterSpecGrpc>? = null,
     val strategy: String? = null,
     override var linkTo: List<LinkEndpoint>? = null
 ) : Linkable
