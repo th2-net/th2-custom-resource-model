@@ -20,6 +20,7 @@ data class Service(
     val enabled: Boolean? = false,
     val nodePort: List<NodePortConfig>? = null,
     val clusterIP: List<ClusterIpConfig>? = null,
+    val loadBalancer: List<LoadBalancerConfig>? = null,
     val ingress: Ingress? = null
 )
 
@@ -30,6 +31,11 @@ data class NodePortConfig(
 )
 
 data class ClusterIpConfig(
+    val name: String = "",
+    val containerPort: Int? = null,
+)
+
+data class LoadBalancerConfig(
     val name: String = "",
     val containerPort: Int? = null,
 )
