@@ -25,7 +25,7 @@ data class ServiceV1(
     val ingress: Ingress?
 ) {
     enum class ServiceType {
-        NodePort, ClusterIP
+        NodePort, ClusterIP, LoadBalancer
     }
 }
 
