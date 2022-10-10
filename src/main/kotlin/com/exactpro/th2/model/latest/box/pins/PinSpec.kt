@@ -32,7 +32,7 @@ sealed interface MqPin : Pin {
 }
 
 sealed interface Linkable : Pin {
-    val linkTo: List<LinkEndpoint>?
+    var linkTo: List<LinkEndpoint>?
 }
 
 data class MqSubscriber(
