@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package com.exactpro.th2.model.v1.link
+package com.exactpro.th2.model.latest.link
 
-import com.exactpro.th2.model.latest.link.LinkEndpoint
-
-data class RouterLink(
-    val name: String,
-    val from: LinkEndpoint,
-    val to: LinkEndpoint
+data class LinkEndpoint(
+    val box: String? = null,
+    val pin: String? = null
 )
