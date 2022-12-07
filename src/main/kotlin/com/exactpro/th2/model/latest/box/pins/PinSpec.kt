@@ -16,7 +16,7 @@
 
 package com.exactpro.th2.model.latest.box.pins
 
-import com.exactpro.th2.model.v1.link.LinkEndpoint
+import com.exactpro.th2.model.latest.link.LinkEndpoint
 
 data class PinSpec(
     val mq: MqSection? = null,
