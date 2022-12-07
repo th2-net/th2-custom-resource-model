@@ -16,12 +16,10 @@
 
 package com.exactpro.th2.model.latest.box.extendedsettings
 
-import com.exactpro.th2.model.latest.box.ChartConfig
 import io.fabric8.kubernetes.api.model.HostAlias
 import io.fabric8.kubernetes.api.model.ResourceRequirements
 
 data class ExtendedSettings(
-    val chartConfig: ChartConfig? = null,
     val envVariables: Map<String, String>? = null,
     val sharedMemory: SharedMemory? = null,
     val replicas: Int? = null,
