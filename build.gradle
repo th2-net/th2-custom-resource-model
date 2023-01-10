@@ -184,3 +184,6 @@ detekt {
     autoCorrect = true
     config = files("$rootDir/config/detekt/detekt.yml")
 }
+dependencyLocking {    
+    lockAllConfigurations()
+}
