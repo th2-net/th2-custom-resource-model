@@ -6,12 +6,13 @@ plugins {
     id 'maven-publish'
     id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
     id 'signing'
+    id "org.owasp.dependencycheck" version "8.1.0"
 }
 
 ext {
     sharedDir = file("${project.rootDir}/libs")
-    fabric_version = '6.3.1'
-    jackson_version = '2.14.1'
+    fabric_version = '6.4.1'
+    jackson_version = '2.14.2'
 }
 
 group = 'com.exactpro.th2'
@@ -165,6 +166,17 @@ dependencies {
     implementation "io.fabric8:kubernetes-client:$fabric_version"
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$kotlin_detekt_version")
+}
+
+dependencyCheck {
+    formats=['SARIF', 'JSON', 'HTML']
+    failBuildOnCVSS=5
+
+    analyzers {
+        assemblyEnabled = false
+        nugetconfEnabled = false
+        nodeEnabled = false
+    }
 }
 
 test {
