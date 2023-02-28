@@ -13,6 +13,7 @@ ext {
     sharedDir = file("${project.rootDir}/libs")
     fabric_version = '6.4.1'
     jackson_version = '2.14.2'
+    okhttp_version = '4.10.0'
 }
 
 group = 'com.exactpro.th2'
@@ -164,6 +165,10 @@ clean {
 dependencies {
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jackson_version"
     implementation "io.fabric8:kubernetes-client:$fabric_version"
+
+    // TODO only used to avoid vulnerability, can be removed once fabric8 is updated
+    implementation "com.squareup.okhttp3:okhttp:${okhttp_version}"
+
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$kotlin_detekt_version")
 }
