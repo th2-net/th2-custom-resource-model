@@ -14,30 +14,32 @@
  * limitations under the License.
  */
 
-package com.exactpro.th2.model.latest.box.extendedsettings
+package com.exactpro.th2.model.v2
 
-data class Service(
+data class ServiceV2(
     val enabled: Boolean? = false,
-    val nodePort: List<NodePortConfig>? = null,
-    val clusterIP: List<ClusterIpConfig>? = null,
-    val loadBalancer: List<LoadBalancerConfig>? = null,
+    val nodePort: List<NodePortConfigV2>? = null,
+    val clusterIP: List<ClusterIpConfigV2>? = null,
+    val loadBalancer: List<LoadBalancerConfigV2>? = null,
+    val ingress: IngressV2? = null
 )
 
-data class NodePortConfig(
+data class NodePortConfigV2(
     val name: String = "",
     val containerPort: Int? = null,
-    val exposedPort: Int = -1,
-    val urlPath: String? = null
+    val exposedPort: Int = -1
 )
 
-data class ClusterIpConfig(
+data class ClusterIpConfigV2(
     val name: String = "",
     val containerPort: Int? = null,
-    val urlPath: String? = null
 )
 
-data class LoadBalancerConfig(
+data class LoadBalancerConfigV2(
     val name: String = "",
     val containerPort: Int? = null,
-    val urlPath: String? = null
+)
+
+data class IngressV2(
+    val urlPaths: List<String>? = null
 )
