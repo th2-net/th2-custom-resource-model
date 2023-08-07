@@ -17,7 +17,6 @@
 package com.exactpro.th2.model.v2
 
 import com.exactpro.th2.model.latest.box.Prometheus
-import com.exactpro.th2.model.latest.box.extendedsettings.ExtendedSettings
 import com.exactpro.th2.model.latest.box.pins.PinSpec
 
 data class SpecV2(
