@@ -16,13 +16,13 @@
 
 package com.exactpro.th2.model.v1.box.extendedsettings
 
-import com.exactpro.th2.model.latest.box.extendedsettings.Ingress
+import com.exactpro.th2.model.v2.IngressV2
 
 data class ServiceV1(
     val enabled: Boolean?,
     val endpoints: List<ServiceEndpoint>?,
     val type: ServiceType?,
-    val ingress: Ingress?
+    val ingress: IngressV2?
 ) {
     enum class ServiceType {
         NodePort, ClusterIP, LoadBalancer
