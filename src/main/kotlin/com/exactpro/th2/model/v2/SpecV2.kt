@@ -16,6 +16,7 @@
 
 package com.exactpro.th2.model.v2
 
+import com.exactpro.th2.model.latest.box.ImagePullSecret
 import com.exactpro.th2.model.latest.box.Prometheus
 import com.exactpro.th2.model.latest.box.pins.PinSpec
 
@@ -36,5 +37,6 @@ data class SpecV2(
     val grpcRouter: Map<String, Any>? = null,
     val cradleManager: Map<String, Any>? = null,
     val disabled: Boolean? = false,
-    val bookName: String? = null
+    val bookName: String? = null,
+    val imagePullSecrets: List<ImagePullSecret>? = null,
 )

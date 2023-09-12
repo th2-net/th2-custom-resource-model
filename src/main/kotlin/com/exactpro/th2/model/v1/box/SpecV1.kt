@@ -16,9 +16,11 @@
 
 package com.exactpro.th2.model.v1.box
 
+import com.exactpro.th2.model.latest.box.ImagePullSecret
 import com.exactpro.th2.model.latest.box.Prometheus
 import com.exactpro.th2.model.v1.box.extendedsettings.ExtendedSettingsV1
 import com.exactpro.th2.model.v1.box.pins.PinSpecV1
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class SpecV1(
@@ -33,9 +35,10 @@ data class SpecV1(
     @JsonProperty("extended-settings") val extendedSettings: ExtendedSettingsV1?,
     val pins: List<PinSpecV1>?,
     val prometheus: Prometheus?,
-    val loggingConfig: String?,
+    @JsonAlias("logFile") val loggingConfig: String?,
     val mqRouter: Map<String, Any>?,
     val grpcRouter: Map<String, Any>?,
     val cradleManager: Map<String, Any>?,
-    val disabled: Boolean?
+    val disabled: Boolean?,
+    val imagePullSecrets: List<ImagePullSecret>? = null,
 )

@@ -36,5 +36,6 @@ data class Spec(
     val grpcRouter: Map<String, Any>? = null,
     val cradleManager: Map<String, Any>? = null,
     val disabled: Boolean? = false,
-    val bookName: String? = null
+    val bookName: String? = null,
+    val imagePullSecrets: List<ImagePullSecret>? = null,
 )
